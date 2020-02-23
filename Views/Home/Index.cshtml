@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Site>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-controller="Home" asp-action="Search" method="GET">
+    <div class="form-row justify-content-center">
+        <div class="form-group col-md-6">
+            <input type="text" name="aliasToSearch" class="form-control" id="aliasToSearch" placeholder="Search by Alias">
+        </div>
+        <div class="form-group col-md-3">
+            <button type="submit" class="btn btn-secondary btn-block">Search</button>    
+        </div>
+    </div>
+</form>
+
+<form asp-controller="Home" asp-action="AddSite" method="POST">
+    <div class="form-row justify-content-center mb-3">
+        <div class="form-group col-md-3">
+            <input type="text" name="Alias" class="form-control" id="alias" placeholder="Site Alias">
+        </div>
+    <div class="form-group col-md-3">
+        <input type="text" name="Url" class="form-control" id="url" placeholder="Site URL">
+    </div>
+    <div class="form-group col-md-3">
+        <button type="submit" class="btn btn-secondary btn-block">Create Site Alias</button>
+    </div>
+        
+    </div>
+</form>
+
+
+<div class="text-center">
+    <h3 class="text-black-50 mb-4">
+            @if(ViewData["isFromSearch"] == null)
+            {
+                <p>Top 10 visited sites using this app</p>
+            }else{
+                <p>Search result</p>
+                }
+</div>
+
+<div class="text-center">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Alias</th>
+                <th scope="col">URL</th>
+                <th scope="col">Accessed</th>
+                <th scope="col>">LastAccessedUTC</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{foreach(var site in Model){
+                <tr>
+                    <td class="align-middle">@site.Alias</td>
+                    <td class="align-middle"><a href="@site.Url" target="_blank">@site.Url</a></td>
+                    <td class="align-middle">@site.Accessed</td>
+                    <td class="align-middle">@site.LastTimeAccessed</td>
+                    <td class="align-middle">
+                        <form class="form-inline" asp-controller="Home" asp-action="RemoveSite" method="POST">
+                                <input hidden value="@site.Alias" type="text" name="alias" class="form-control">
+                            <button type="submit" class="btn btn-link btn-block">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }}
+        </tbody>
+    </table>
+</div>
+
+
+@* Show Modal dialog if we have anyhing to show *@
+@{if(!string.IsNullOrEmpty(ViewData["messageToShow"] as string)){
+    @section ShowModal{
+        <script type="text/javascript">
+            $('#myModal').modal('show')
+        </script>
+    }
+}}
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Info</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>@ViewData["messageToShow"]</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
