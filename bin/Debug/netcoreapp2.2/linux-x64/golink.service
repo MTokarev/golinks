@@ -4,7 +4,6 @@ Description=golink
 [Service]
 Type=notify
 ExecStart=/var/www/golink/golink
-User=svcgolink
 WorkingDirectory=/var/www/golink/
 
 [Install]
