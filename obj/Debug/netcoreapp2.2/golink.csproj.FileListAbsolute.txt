@@ -15,9 +15,7 @@ C:\git\golink\obj\Debug\netcoreapp2.2\golink.TagHelpers.input.cache
 C:\git\golink\obj\Debug\netcoreapp2.2\golink.TagHelpers.output.cache
 C:\git\golink\obj\Debug\netcoreapp2.2\golink.RazorCoreGenerate.cache
 C:\git\golink\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
-C:\git\golink\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
 C:\git\golink\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
-C:\git\golink\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 C:\git\golink\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
 C:\git\golink\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
 C:\git\golink\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
