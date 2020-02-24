@@ -14,12 +14,21 @@ namespace golink
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+        public static IWebHost CreateWebHostBuilder(string[] args)
+        {
+                var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddCommandLine(args)
+                .Build();
+
+            return WebHost.CreateDefaultBuilder(args)
+                .UseConfiguration(config)
                 .UseStartup<Startup>()
-                .UseUrls("http://.*:80");
+                .Build();
+ 
+        }
     }
 }
