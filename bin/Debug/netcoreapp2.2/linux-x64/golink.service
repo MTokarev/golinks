@@ -3,8 +3,13 @@ Description=golink
 
 [Service]
 Type=notify
-ExecStart=/var/www/golink/golink
+ExecStart=/var/www/golink/golink --urls "http://go.eas.az:80"
 WorkingDirectory=/var/www/golink/
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=golink
 
 [Install]
 WantedBy=multi-user.target
