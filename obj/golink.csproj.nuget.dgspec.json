@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/root/golinkGit/golinks/golink.csproj": {}
+    "/root/golink/golinks/golink.csproj": {}
   },
   "projects": {
-    "/root/golinkGit/golinks/golink.csproj": {
+    "/root/golink/golinks/golink.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/root/golinkGit/golinks/golink.csproj",
+        "projectUniqueName": "/root/golink/golinks/golink.csproj",
         "projectName": "golink",
-        "projectPath": "/root/golinkGit/golinks/golink.csproj",
+        "projectPath": "/root/golink/golinks/golink.csproj",
         "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/root/golinkGit/golinks/obj/",
+        "outputPath": "/root/golink/golinks/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
