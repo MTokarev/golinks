@@ -4,7 +4,7 @@ Description=golink
 [Service]
 Type=notify
 ExecStart=/var/www/golink/golink --urls "http://go.eas.az:80"
-WorkingDirectory=/var/www/golink/
+WorkingDirectory=/var/www/golink/publish
 Environment=ASPNETCORE_ENVIRONMENT=Production
 Restart=always
 RestartSec=10
