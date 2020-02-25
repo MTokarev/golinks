@@ -1,0 +1,91 @@
+
+module my-golink 1.0;
+
+require {
+	type httpd_modules_t;
+	type NetworkManager_t;
+	type tuned_log_t;
+	type faillog_t;
+	type auditd_t;
+	type system_dbusd_t;
+	type hypervkvp_var_lib_t;
+	type unconfined_t;
+	type login_exec_t;
+	type sssd_t;
+	type lost_found_t;
+	type cron_log_t;
+	type systemd_resolved_t;
+	type admin_home_t;
+	type tmp_t;
+	type init_t;
+	type firewalld_var_log_t;
+	type systemd_logind_t;
+	type tuned_t;
+	type httpd_log_t;
+	type httpd_t;
+	type mysqld_db_t;
+	type mysqld_log_t;
+	type local_login_t;
+	type unconfined_dbusd_t;
+	type httpd_sys_content_t;
+	type sssd_var_log_t;
+	class file { create execute execute_no_trans getattr lock map open read setattr unlink write };
+	class process { execmem getsession };
+	class fifo_file { create getattr open read unlink };
+	class dir read;
+	class netlink_audit_socket getattr;
+	class netlink_route_socket getattr;
+	class netlink_selinux_socket getattr;
+	class netlink_kobject_uevent_socket getattr;
+	class netlink_generic_socket getattr;
+	class rawip_socket getattr;
+	class packet_socket getattr;
+	class unix_stream_socket getattr;
+	class unix_dgram_socket getattr;
+}
+
+#============= init_t ==============
+allow init_t NetworkManager_t:netlink_generic_socket getattr;
+allow init_t NetworkManager_t:netlink_kobject_uevent_socket getattr;
+allow init_t NetworkManager_t:netlink_route_socket getattr;
+allow init_t NetworkManager_t:packet_socket getattr;
+allow init_t NetworkManager_t:rawip_socket getattr;
+
+#!!!! This avc can be allowed using the boolean 'domain_can_mmap_files'
+allow init_t admin_home_t:file map;
+allow init_t admin_home_t:file { execute open read };
+allow init_t auditd_t:netlink_audit_socket getattr;
+allow init_t cron_log_t:file getattr;
+allow init_t faillog_t:dir read;
+allow init_t firewalld_var_log_t:file getattr;
+allow init_t httpd_log_t:file getattr;
+allow init_t httpd_modules_t:file getattr;
+
+#!!!! This avc is allowed in the current policy
+allow init_t httpd_sys_content_t:file { execute execute_no_trans map };
+allow init_t httpd_sys_content_t:file { create lock setattr unlink write };
+allow init_t httpd_t:fifo_file getattr;
+allow init_t hypervkvp_var_lib_t:file getattr;
+allow init_t local_login_t:unix_stream_socket getattr;
+allow init_t login_exec_t:file getattr;
+allow init_t lost_found_t:dir read;
+allow init_t mysqld_db_t:file getattr;
+allow init_t mysqld_log_t:file getattr;
+allow init_t self:process { execmem getsession };
+allow init_t sssd_t:fifo_file getattr;
+allow init_t sssd_t:netlink_route_socket getattr;
+allow init_t sssd_var_log_t:file getattr;
+allow init_t system_dbusd_t:fifo_file getattr;
+allow init_t system_dbusd_t:netlink_audit_socket getattr;
+allow init_t system_dbusd_t:netlink_selinux_socket getattr;
+allow init_t systemd_logind_t:netlink_kobject_uevent_socket getattr;
+allow init_t systemd_resolved_t:netlink_route_socket getattr;
+allow init_t tmp_t:fifo_file { create open read unlink };
+allow init_t tuned_log_t:file getattr;
+allow init_t tuned_t:fifo_file getattr;
+allow init_t tuned_t:netlink_kobject_uevent_socket getattr;
+allow init_t unconfined_dbusd_t:unix_stream_socket getattr;
+allow init_t unconfined_t:netlink_kobject_uevent_socket getattr;
+allow init_t unconfined_t:netlink_selinux_socket getattr;
+allow init_t unconfined_t:unix_dgram_socket getattr;
+allow init_t unconfined_t:unix_stream_socket getattr;
