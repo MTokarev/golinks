@@ -2,7 +2,7 @@
 Description=golink
 
 [Service]
-Type=notify
+Type=Simple
 ExecStart=/var/www/golink/golink --urls "http://0.0.0.0:80"
 WorkingDirectory=/var/www/golink/publish
 Environment=ASPNETCORE_ENVIRONMENT=Production
