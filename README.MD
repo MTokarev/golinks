@@ -2,12 +2,17 @@
 
 ## Content:
 
-* Overview
-* Feautures
-* Installation on Linux
+* [Overview](#Overview)
+
+* [Feautures](#App-features)
+* [Demo](#Small-demo)
+* [Installation on Linux](#Linux-x64)
 * Installation on Windows
+* [Installation Demo](#Installation-Demo)
 * Known issues
 * ToDo
+
+### Overview
 
 Using this site you can simplify mapping of compllex URLs to the meaningful alias.
 Let's say that your user need to access mail and the URL is  https://office.outlook365.com/owa in this case you can register an alias like go/mail or https://go.domain.com/mail.
@@ -16,8 +21,8 @@ This project is built using asp.net core and can be packaged to run both on win3
 
 I have added an API controller [SiteController] in order to work in programatically way just in case you want to integrate something to it.
 
-App functionality:
----
+### App features:
+
 * Creatining mapping
 * Removing Mapping
 * Search for aliases
@@ -84,6 +89,12 @@ To:
 
 If you need to bind to the 8080 port.
 This can be also helpful if you want to install your service to alternate port and put this app behind Apache or NGINX.
+
+### Instalation Demo
+
+`Installing golink on CentOS7`
+![img](~/../Docs/Img/InstallationDemo.gif)
+
 
 ### Logging
 You can check logs by running:
