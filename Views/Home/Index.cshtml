@@ -54,7 +54,7 @@
         <tbody>
             @{foreach(var site in Model){
                 <tr>
-                    <td class="align-middle">@site.Alias</td>
+                    <td class="align-middle"><a href="http://go/@site.Alias" target="_blank">http://go/@site.Alias</a></td>
                     <td class="align-middle"><a href="@site.Url" target="_blank">@site.Url</a></td>
                     <td class="align-middle">@site.Accessed</td>
                     <td class="align-middle">@site.LastTimeAccessed</td>

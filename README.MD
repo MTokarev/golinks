@@ -9,7 +9,7 @@
 * [Installation on Linux](#Linux-x64)
 * Installation on Windows
 * [Installation Demo](#Installation-Demo)
-* Known issues
+* [Known issues](#Known-issues)
 * ToDo
 
 ### Overview
@@ -90,9 +90,10 @@ To:
 If you need to bind to the 8080 port.
 This can be also helpful if you want to install your service to alternate port and put this app behind Apache or NGINX.
 
-### Instalation Demo
+### Installation Demo
 
 `Installing golink on CentOS7`
+
 ![img](~/../Docs/Img/InstallationDemo.gif)
 
 
@@ -101,6 +102,8 @@ You can check logs by running:
 
 `journalctl -fu golink.service`
 
+### Known issues
 
+Everything perfect, the only butterflies and rainbow in the project. Awaiting users feedback.
 
 Please don't blame me to much, since it is my first project using .net
