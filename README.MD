@@ -7,10 +7,10 @@
 * [Feautures](#App-features)
 * [Demo](#Small-demo)
 * [Installation on Linux](#Linux-x64)
-* Installation on Windows
+* [Installation on Windows](#windows)
 * [Installation Demo](#Installation-Demo)
 * [Known issues](#Known-issues)
-* ToDo
+* [ToDo](#ToDo)
 
 ### Overview
 
@@ -97,7 +97,27 @@ This can be also helpful if you want to install your service to alternate port a
 ![img](~/../Docs/Img/InstallationDemo.gif)
 
 
+## Windows
+### Tested on Windows 2012 R2 and Windows 2016
+
+Open Powershell as an administrator and copy-past followinf code:
+```
+$tmpFile="C:\Windows\Temp\win-x64.zip";$tmpHostingEnv="C:\Windows\Temp\ihe.exe";$webAppLocation="C:\inetpub\golink";Write-Host -ForegroundColor Green "Spelling magic, it wouldn't take more than ages...";Write-Host -ForegroundColor Green "`t-Downloading binaries from github";[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;Invoke-WebRequest https://github.com/MTokarev/golinks/blob/master/bin/Debug/netcoreapp2.2/win-x64/win-x64.zip?raw=true -OutFile $tmpFile;New-Item -Path $webAppLocation -Type Directory | Out-Null;Write-Host -ForegroundColor Green "`t-Expanding archive $tmpFile to $webAppLocation";[System.Reflection.Assembly]::LoadWithPartialName("System.IO.Compression.FileSystem") | Out-Null;[System.IO.Compression.ZipFile]::ExtractToDirectory($tmpFile, $webAppLocation);Write-Host -ForegroundColor Green "`t-Installing IIS";Install-WindowsFeature Web-Server -IncludeManagementTools | Out-Null;Write-Host -ForegroundColor Green "`t-Downloading Hosting Bundle from MSFT to support ASP.NET Core behind IIS";Invoke-WebRequest https://download.visualstudio.microsoft.com/download/pr/dd119832-dc46-4ccf-bc12-69e7bfa61b18/990843c6e0cbd97f9df68c94f6de6bb6/dotnet-hosting-3.1.2-win.exe -OutFile $tmpHostingEnv;Start-Process -FilePath $tmpHostingEnv -Wait -ArgumentList /passive;iisreset | Out-Null;New-WebAppPool -name "GoLinkAppPool" -Force;$appPool = Get-Item "IIS:\AppPools\GoLinkAppPool";$appPool.processModel.identityType = "NetworkService";$appPool | Set-Item;Write-Host -ForegroundColor Green "`t-Registring Site in IIS";new-WebSite -name "GoLink" -PhysicalPath "$webAppLocation\publish" -ApplicationPool "GoLinkAppPool" -force | Out-Null;Write-Host -ForegroundColor Green "`t-Allowing HTTP port passing Windows Firewall";New-NetFirewallRule -DisplayName "HTTP-TCP-80" -Direction Inbound -LocalPort 80 -Protocol TCP -Action Allow | Out-Null;Write-Host -ForegroundColor Green "`t***Execution has been completed***"
+```
+
+This script will:
+
+1. Download Binaries from github
+2. Install IIS
+3. Download [Hosting Bundle](https://dotnet.microsoft.com/download/dotnet-core/thank-you/runtime-aspnetcore-2.2.8-windows-hosting-bundle-installer) to support .NET Core integration with IIS
+4. Silently install Hosting Bundle
+5. Create an IIS WebSite
+6. Add HTTP exception to Firewall 
+
+
+
 ### Logging
+#### Linux
 You can check logs by running:
 
 `journalctl -fu golink.service`
@@ -107,3 +127,8 @@ You can check logs by running:
 Everything perfect, the only butterflies and rainbow in the project. Awaiting users feedback.
 
 Please don't blame me to much, since it is my first project using .net
+
+### ToDo
+
+1. Move Logic to the service
+2. Add AzureAD auth
