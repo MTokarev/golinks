@@ -23,17 +23,16 @@ I have added an API controller [SiteController] in order to work in programatica
 
 ### App features:
 
-* Creatining mapping
-* Removing Mapping
+* Create mapping
+* Remove Mapping
 * Search for aliases
-* Logging how many times site was accessed
-* Board on the home page with most visited sites
+* Log how many times site was accessed
+* Dashboard on the home page with most visited sites
 * API to work with site programmatically
   
 Small demo:
 ---
 ![img](~/../Docs/Img/goLinksDemo.gif)
-
 
 # Installation
 
@@ -74,10 +73,9 @@ firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --reload
 ```
 
-
 `NOW you can try to access your site by navigating http://yourhostname`
 
-By default the app will bind to the 0.0.0.0:80 which can be ovverided by setting --urls in `/etc/systemd/system/golink.service`
+By default, the app will bind to the 0.0.0.0:80 which can be ovverided by setting --urls in `/etc/systemd/system/golink.service`
 
 From:
 
@@ -89,13 +87,6 @@ To:
 
 If you need to bind to the 8080 port.
 This can be also helpful if you want to install your service to alternate port and put this app behind Apache or NGINX.
-
-### Installation Demo
-
-`Installing golink on CentOS7`
-
-![img](~/../Docs/Img/InstallationDemo.gif)
-
 
 ## Windows
 ### Tested on Windows 2012 R2 and Windows 2016
@@ -117,6 +108,17 @@ What Script will do:
 
 Thats it, you can try access your site.
 
+### Installation Demo
+
+I made installation piece as easy as possible, but I know that you will enjoy seing my Copy-Paste deployment in action :)
+
+`Installing golink on CentOS7`
+
+![img](~/../Docs/Img/InstallationDemo.gif)
+
+`Deploying to windows`
+
+![img](~/../Docs/Img/installation-on-windows-demo.gif)
 
 ### Logging
 #### Linux
@@ -126,7 +128,8 @@ You can check logs by running:
 
 ### Known issues
 
-Everything perfect, the only butterflies and rainbow in the project. Awaiting users feedback.
+Everything perfect, the only butterflies and rainbow in the project.
+One thing I want to cover, sometimes installation on windows didn't start website, if you couldn't access your site, please check if it started in IIS.
 
 Please don't blame me to much, since it is my first project using .net
 
@@ -134,3 +137,4 @@ Please don't blame me to much, since it is my first project using .net
 
 1. Move Logic to the service
 2. Add AzureAD auth
+
