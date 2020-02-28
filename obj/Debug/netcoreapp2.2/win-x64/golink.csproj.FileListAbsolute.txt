@@ -29,3 +29,4 @@ C:\git\golink\obj\Debug\netcoreapp2.2\win-x64\golink.Views.pdb
 C:\git\golink\obj\Debug\netcoreapp2.2\win-x64\golink.dll
 C:\git\golink\obj\Debug\netcoreapp2.2\win-x64\golink.pdb
 C:\git\golink\obj\Debug\netcoreapp2.2\win-x64\golink.csproj.CopyComplete
+C:\git\golink\bin\Debug\netcoreapp2.2\win-x64\Data\golink.db

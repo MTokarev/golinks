@@ -137,3 +137,4 @@ Please don't blame me to much, since it is my first project using .net
 
 1. Move Logic to the service
 2. Add AzureAD auth
+3. Global Exception Handler
